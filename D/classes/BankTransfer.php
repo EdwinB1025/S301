@@ -1,8 +1,8 @@
 <?php
 
-class BankTransfer implements PaymentMethods
+class BankTransfer
 {
-    public function sendPayment(float $amount): string
+    public function sendTransfer(float $amount): string
     {
         return "{$amount} bank transfer done";
     }

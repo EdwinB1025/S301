@@ -1,5 +1,5 @@
 <?php
 interface PaymentMethods
 {
-    public function sendAmount(float $cantidad): string;
+    public function sendPayment(float $cantidad): string;
 }
