@@ -1,22 +1,47 @@
 <?php
 
+abstract class Instrument
+{
+    abstract public function play(): string;
+}
+
+class Guitar extends Instrument
+{
+    public function play(): string
+    {
+        return "🎸 Strumming the guitar\n";
+    }
+}
+
+class Drums extends Instrument
+{
+    public function play(): string
+    {
+        return "🥁 Beating the drums\n";
+    }
+}
+
+class Piano extends Instrument
+{
+    public function play(): string
+    {
+        return "🎹 Playing the piano\n";
+    }
+}
+
 class InstrumentPlayer
 {
-    public function play(string $instrument): void
+    public static function play(mixed $instrument): string
     {
-        if ($instrument === 'guitar') {
-            echo "🎸 Strumming the guitar\n";
-        } elseif ($instrument === 'drums') {
-            echo "🥁 Beating the drums\n";
-        } elseif ($instrument === 'piano') {
-            echo "🎹 Playing the piano\n";
+        if ($instrument instanceof Instrument) {
+            return $instrument->play();
         } else {
-            echo "🔇 Unknown instrument\n";
+            return "🔇 Unknown instrument\n";
         }
     }
 }
 
-$player = new InstrumentPlayer();
-$player->play('guitar');
-$player->play('drums');
-$player->play('piano');
+echo InstrumentPlayer::play(new Guitar());
+echo InstrumentPlayer::play(new Drums());
+echo InstrumentPlayer::play(new Piano());
+echo InstrumentPlayer::play('Clarinete');
