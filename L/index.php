@@ -5,8 +5,13 @@ include('classes/Ghost.php');
 function doCombat(Character $character)
 {
     $character->move();
-    $character->attack(); 
+    if ($character instanceof Actions) {
+        $character->attack();
+    }
 }
 
 $enemy = new Ghost();
-doCombat($enemy); 
+doCombat($enemy);
+
+$mainCharacter =  new Knight();
+doCombat($mainCharacter);
