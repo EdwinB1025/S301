@@ -9,14 +9,19 @@ $washer = new WashingMachine();
 $heater->turnOn();
 $heater->heat();
 $heater->turnOff();
-$heater->wash();
+try {
+    $heater->wash();
+} catch (Throwable $error) {
+    echo "Action not executed by " . $heater::class . " - Error: " . $error->getMessage();
+}
 
 echo "\n";
-
 $washer->turnOn();
-$washer->heat();
+try {
+    $washer->heat();
+} catch (Throwable $error) {
+    echo "Action not executed by " . $washer::class . " - Error: " . $error->getMessage();
+}
+echo "\n";
 $washer->wash();
 $washer->turnOff();
-
-
-?>

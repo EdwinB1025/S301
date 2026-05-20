@@ -14,18 +14,6 @@ class WashingMachine implements IMachineActions
         echo "Washing machine off\n";
     }
 
-    public function heat(): void
-    {
-        // Not supported
-        throw new Exception("Heating not supported");
-    }
-
-    public function cool(): void
-    {
-        // Not supported
-        throw new Exception("Cooling not supported");
-    }
-
     public function wash(): void
     {
         echo "Washing clothes\n";
