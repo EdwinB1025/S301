@@ -2,7 +2,7 @@
 
 require_once 'IMachineActions.php';
 
-class WashingMachine implements IMachineActions
+class WashingMachine implements BaseActions, WashMachineActions
 {
     public function turnOn(): void
     {

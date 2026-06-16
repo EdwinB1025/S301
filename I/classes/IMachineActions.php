@@ -1,6 +1,6 @@
 <?php
 
-interface IMachineActions
+interface BaseActions
 {
     public function turnOn(): void;
     public function turnOff(): void;
@@ -15,7 +15,7 @@ interface HeaterMachineActions
 interface CoolerMachineActions
 {
 
-    public function heat(): void;
+    public function cool(): void;
 }
 
 interface WashMachineActions

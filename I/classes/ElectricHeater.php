@@ -2,7 +2,7 @@
 
 require_once 'IMachineActions.php';
 
-class ElectricHeater implements IMachineActions, HeaterMachineActions
+class ElectricHeater implements BaseActions, HeaterMachineActions
 {
     public function turnOn(): void
     {
