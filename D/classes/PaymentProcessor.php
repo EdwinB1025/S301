@@ -1,13 +1,15 @@
 <?php
-require_once 'PaymentMethods.php';
+require_once 'PaymentGateaway.php';
 require_once 'PayPalPaymentGateway.php';
 require_once 'StripePaymentGateway.php';
+require_once 'BankTransfer.php';
+
 
 class PaymentProcessor
 {
-
-    public static function procesarPago(PaymentMethods $gateway, float $cantidad): string
+    public function __construct(private PaymentGateaway $gateway) {}
+    public function procesarPago(float $amount)
     {
-        return $gateway->sendPayment($cantidad);
+        echo $this->gateway->processPayment($amount) . "\n";
     }
 }

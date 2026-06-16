@@ -1,11 +1,12 @@
 <?php
 require_once 'classes/PaymentProcessor.php';
-require_once 'classes/BankTransfer.php';
 
-//BankTransfer Class do not share SendPayment method as it has a different design requirements in the architecture, thus, it does not implement the PaymentMethods Interface.
-$processBankTransfer = new BankTransfer();
-echo $processBankTransfer->sendTransfer(5400) . "\n";
+$paymentBank = new PaymentProcessor(new BankTransfer);
+$paymentBank->procesarPago(600);
+
+$paymentPayPal = new PaymentProcessor(new PayPalPaymentGateway);
+$paymentPayPal->procesarPago(600);
 
 
-echo PaymentProcessor::procesarPago(new PayPalPaymentGateway(), 300) . "\n";
-echo PaymentProcessor::procesarPago(new StripePaymentGateway(), 500) . "\n";
+$paymentStripe = new PaymentProcessor(new StripePaymentGateway);
+$paymentStripe->procesarPago(600);
